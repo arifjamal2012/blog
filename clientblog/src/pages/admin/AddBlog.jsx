@@ -20,23 +20,23 @@ const AddBlog = () => {
     const [category, setCategory] = useState("Startup");
     const [isPublished, setIsPublished] = useState(false);
 
-    const generateContent = async () => {
-        if (!title) return toast.error('Please enter the title')
+    // const generateContent = async () => {
+    //     if (!title) return toast.error('Please enter the title')
 
-        try {
-            setIsLoading(true);
-            const { data } = await axios.post('/api/blog/generate', { prompt: title });
-            if (data.success) {
-                quillRef.current.root.innerHTML = parse(data.content)
-            }else{
-                toast.error(data.message)
-            }
-        } catch (error) {
-            toast.error(error.message)
-        } finally {
-            setIsLoading(false)
-        }
-    }
+    //     try {
+    //         setIsLoading(true);
+    //         const { data } = await axios.post('/api/blog/generate', { prompt: title });
+    //         if (data.success) {
+    //             quillRef.current.root.innerHTML = parse(data.content)
+    //         }else{
+    //             toast.error(data.message)
+    //         }
+    //     } catch (error) {
+    //         toast.error(error.message)
+    //     } finally {
+    //         setIsLoading(false)
+    //     }
+    // }
 
     const onSubmitHandler = async (e) => {
         // debugger
@@ -101,7 +101,9 @@ const AddBlog = () => {
 
                         </div>
                     </div> )}
-                    <button disabled={loading} type="button" onClick={generateContent} className='absolute bottom-1 right-2 ml-2 text-xs text-white bg-black/70 px-4 py-1.5 rounded hover:underline cursor-pointer'>Generate with AI</button>
+                    <button disabled={loading} type="button"
+                    // onClick={generateContent}
+                    className='absolute bottom-1 right-2 ml-2 text-xs text-white bg-black/70 px-4 py-1.5 rounded hover:underline cursor-pointer'>Generate with AI</button>
                 </div>
 
                 <p className='mt-4'>Blog category</p>
