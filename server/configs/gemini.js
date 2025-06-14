@@ -11,4 +11,3 @@ async function main(prompt) {
   return response.text
 }
  export default main;
-// main();
